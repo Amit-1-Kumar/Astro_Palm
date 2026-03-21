@@ -1,0 +1,15 @@
+{
+  "appTitle": "AI Lettore del Palmo",
+  "welcome": "Benvenuto nel tuo viaggio cosmico",
+  "home": "Home",
+  "settings": "Impostazioni",
+  "palmScan": "Lettura del Palmo",
+  "tarot": "Lettura dei Tarocchi",
+  "daily": "Guida Quotidiana",
+  "horoscope": "Oroscopo",
+  "love": "Lettura d'Amore",
+  "chat": "Guida IA",
+  "scanLeft": "Mano Sinistra",
+  "scanRight": "Mano Destra",
+  "drawCard": "Pesca una Carta"
+}

@@ -1,0 +1,15 @@
+{
+  "appTitle": "AI Lector de Palma",
+  "welcome": "Bienvenido a tu viaje cósmico",
+  "home": "Inicio",
+  "settings": "Ajustes",
+  "palmScan": "Lectura de Palma",
+  "tarot": "Lectura de Tarot",
+  "daily": "Guía Diaria",
+  "horoscope": "Horóscopo",
+  "love": "Lectura de Amor",
+  "chat": "Guía AI",
+  "scanLeft": "Mano Izquierda",
+  "scanRight": "Mano Derecha",
+  "drawCard": "Sacar una Carta"
+}

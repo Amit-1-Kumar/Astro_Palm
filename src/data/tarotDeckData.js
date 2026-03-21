@@ -1,0 +1,30 @@
+export const tarotDeck = [
+  // Major Arcana
+  { id: 1, name: "The Fool", arcana: "Major" },
+  { id: 2, name: "The Magician", arcana: "Major" },
+  { id: 3, name: "The High Priestess", arcana: "Major" },
+  { id: 4, name: "The Empress", arcana: "Major" },
+  { id: 5, name: "The Emperor", arcana: "Major" },
+  { id: 6, name: "The Hierophant", arcana: "Major" },
+  { id: 7, name: "The Lovers", arcana: "Major" },
+  { id: 8, name: "The Chariot", arcana: "Major" },
+  { id: 9, name: "Strength", arcana: "Major" },
+  { id: 10, name: "The Hermit", arcana: "Major" },
+  { id: 11, name: "Wheel of Fortune", arcana: "Major" },
+  { id: 12, name: "Justice", arcana: "Major" },
+  { id: 13, name: "The Hanged Man", arcana: "Major" },
+  { id: 14, name: "Death", arcana: "Major" },
+  { id: 15, name: "Temperance", arcana: "Major" },
+  { id: 16, name: "The Devil", arcana: "Major" },
+  { id: 17, name: "The Tower", arcana: "Major" },
+  { id: 18, name: "The Star", arcana: "Major" },
+  { id: 19, name: "The Moon", arcana: "Major" },
+  { id: 20, name: "The Sun", arcana: "Major" },
+  { id: 21, name: "Judgement", arcana: "Major" },
+  { id: 22, name: "The World", arcana: "Major" },
+  // Minor Arcana Generation to ensure NO missing data
+  ...Array.from({length: 14}, (_, i) => ({ id: 23 + i, name: `${['Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Page','Knight','Queen','King'][i]} of Swords`, arcana: "Minor" })),
+  ...Array.from({length: 14}, (_, i) => ({ id: 37 + i, name: `${['Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Page','Knight','Queen','King'][i]} of Cups`, arcana: "Minor" })),
+  ...Array.from({length: 14}, (_, i) => ({ id: 51 + i, name: `${['Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Page','Knight','Queen','King'][i]} of Wands`, arcana: "Minor" })),
+  ...Array.from({length: 14}, (_, i) => ({ id: 65 + i, name: `${['Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Page','Knight','Queen','King'][i]} of Pentacles`, arcana: "Minor" }))
+];

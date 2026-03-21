@@ -1,0 +1,15 @@
+{
+  "appTitle": "AI Lecteur de Main",
+  "welcome": "Bienvenue dans votre voyage cosmique",
+  "home": "Accueil",
+  "settings": "Paramètres",
+  "palmScan": "Lecture de la Main",
+  "tarot": "Lecture de Tarot",
+  "daily": "Guide Quotidien",
+  "horoscope": "Horoscope",
+  "love": "Lecture d'Amour",
+  "chat": "Guide IA",
+  "scanLeft": "Main Gauche",
+  "scanRight": "Main Droite",
+  "drawCard": "Tirer une Carte"
+}

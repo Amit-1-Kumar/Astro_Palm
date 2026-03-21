@@ -1,0 +1,15 @@
+{
+  "appTitle": "AI Palm Reader",
+  "welcome": "Welcome to your cosmic journey",
+  "home": "Home",
+  "settings": "Settings",
+  "palmScan": "Palm Scan",
+  "tarot": "Tarot Reading",
+  "daily": "Daily Guidance",
+  "horoscope": "Horoscope",
+  "love": "Love Reading",
+  "chat": "AI Guidance",
+  "scanLeft": "Left Hand",
+  "scanRight": "Right Hand",
+  "drawCard": "Draw a Card"
+}

@@ -1,0 +1,15 @@
+{
+  "appTitle": "AI 손금 리더",
+  "welcome": "우주 여행에 오신 것을 환영합니다",
+  "home": "홈",
+  "settings": "설정",
+  "palmScan": "손금 스캔",
+  "tarot": "타로 리딩",
+  "daily": "일일 안내",
+  "horoscope": "별자리 운세",
+  "love": "연애 리딩",
+  "chat": "AI 안내",
+  "scanLeft": "왼손",
+  "scanRight": "오른손",
+  "drawCard": "카드 뽑기"
+}

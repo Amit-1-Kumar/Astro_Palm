@@ -1,0 +1,51 @@
+@import './theme/colors.css';
+@import './theme/animations.css';
+
+/* Global Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  background-image: radial-gradient(circle at 50% 0%, #EDF2F7 0%, var(--bg-dark) 70%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Prevent overscroll bounce on mobile PWAs */
+  overscroll-behavior-y: none; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--glass-border);
+  border-radius: 28px; /* High radius as requested */
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-panel-hover:active {
+  background: var(--bg-card-hover);
+  transform: scale(0.98);
+  transition: all 0.2s ease;
+}
+
+/* Hide scrollbar for a clean, app-like feel */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
