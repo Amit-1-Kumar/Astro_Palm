@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+    :root {
+      --primary-color: #6366f1;
+      --primary-hover: #4f46e5;
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      --surface-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-glow: rgba(99, 102, 241, 0.3);
+      --card-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      display: flex;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Keyframes */
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeRight {
+      0% { opacity: 0; transform: translateX(-40px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-right: 1px solid var(--glass-border);
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      animation: fadeRight 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 10;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      padding: 30px 0;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--glass-border);
+      background: linear-gradient(to right, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .sidebar ul li {
+      padding: 15px 20px;
+      margin: 10px 0;
+      background: transparent;
+      border-radius: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--text-muted);
+      border: 1px solid transparent;
+    }
+
+    .sidebar ul li:hover {
+      background: var(--surface-bg);
+      color: var(--text-main);
+      border: 1px solid var(--glass-border);
+      transform: translateX(8px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 260px;
+      width: calc(100% - 260px);
+      padding: 30px 40px;
+    }
+
+    /* Topbar */
+    .topbar {
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 20px 30px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      animation: slideIn 0.5s ease-out 0.1s both;
+    }
+
+    .topbar h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .topbar input {
+      padding: 12px 20px;
+      width: 280px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      border-radius: 30px;
+      font-size: 0.95rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      outline: none;
+    }
+
+    .topbar input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+      width: 320px;
+    }
+
+    .topbar input::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Cards */
+    .cards {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: slideIn 0.5s ease-out both;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(to right, #3b82f6, #8b5cf6);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .cards .card:nth-child(1) { animation-delay: 0.2s; }
+    .cards .card:nth-child(2) { animation-delay: 0.3s; }
+    .cards .card:nth-child(3) { animation-delay: 0.4s; }
+    .cards .card:nth-child(4) { animation-delay: 0.5s; }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card p {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+      display: inline-block;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .cards .card:nth-child(even) p {
+      animation-delay: 3s;
+    }
+
+    /* Table */
+    .table-container {
+      margin-top: 40px;
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      animation: slideIn 0.6s ease-out 0.6s both;
+    }
+
+    .table-container h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+    }
+
+    table th, table td {
+      padding: 18px 20px;
+      text-align: left;
+    }
+
+    table th {
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    table tr {
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+    }
+    
+    table td:first-child, table th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
+    table td:last-child, table th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
+
+    table tr:not(:first-child):hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: scale(1.01);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    table td {
+      color: var(--text-main);
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+    }
+
+    /* Status Badges */
+    td:nth-child(3) {
+      font-weight: 600;
+    }
+    
+    tr:nth-child(2) td:nth-child(3) { color: #10b981; }
+    tr:nth-child(3) td:nth-child(3) { color: #f59e0b; }
+    tr:nth-child(4) td:nth-child(3) { color: #ef4444; }
+
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li>Dashboard</li>
+      <li>Users</li>
+      <li>Analytics</li>
+      <li>Settings</li>
+      <li>Logout</li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <h2>Dashboard</h2>
+      <input type="text" placeholder="Search...">
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p>1,245</p>
+      </div>
+      <div class="card">
+        <h3>Revenue</h3>
+        <p>$8,540</p>
+      </div>
+      <div class="card">
+        <h3>Orders</h3>
+        <p>320</p>
+      </div>
+      <div class="card">
+        <h3>Pending</h3>
+        <p>45</p>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <h3>Recent Users</h3>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>Amit Sharma</td>
+          <td>amit@example.com</td>
+          <td>Active</td>
+        </tr>
+        <tr>
+          <td>Riya Singh</td>
+          <td>riya@example.com</td>
+          <td>Pending</td>
+        </tr>
+        <tr>
+          <td>Rahul Verma</td>
+          <td>rahul@example.com</td>
+          <td>Inactive</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>
